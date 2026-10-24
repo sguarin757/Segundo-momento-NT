@@ -159,8 +159,11 @@ def exportar_pdf(datos):
         crear_tabla_pdf(filtrados, estilo_cuerpo, estilo_encabezado),
     ]
 
-    doc.build(story)
-    print(f"\n[EXITO] Archivo '{ARCHIVO_PDF}' generado correctamente.")
+    try:
+        doc.build(story)
+        print(f"\n[EXITO] Archivo '{ARCHIVO_PDF}' generado correctamente.")
+    except PermissionError:
+        print(f"\n[ERROR] No se pudo guardar '{ARCHIVO_PDF}'. Cierre el archivo si está abierto e intente de nuevo.")
 
 
 # Reto 4: menu interactivo
